@@ -1,0 +1,118 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.16/browser.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+<div id="app">
+    <!-- This element's contents will be replaced with your component. -->
+</div>
+<script type="text/babel">
+var AddFriend = React.createClass({
+  getInitialState: function(){
+    return {
+      newFriend: ''
+    }
+  },
+  updateNewFriend: function(e){
+    this.setState({
+      newFriend: e.target.value
+    });
+  },
+  propTypes:{
+    addNew:React.PropTypes.func.isRequired
+  },
+  handleAddNew: function(){
+    this.props.addNew(this.state.newFriend);
+    this.setState({
+      newFriend: ''
+    });
+  },
+  render: function(){
+    return (
+        <div>
+          <input type="text" value={this.state.newFriend} onChange={this.updateNewFriend} />
+          <button onClick={this.handleAddNew}> Add Friend </button>
+        </div>
+    );
+  }
+});
+
+var FriendsContainer = React.createClass({
+    getInitialState:function(){
+        return {
+            name:"Arulselvan Madhavan",
+            friends:["Something","else","or","nothing"]
+        }
+    },
+    componentWillMount:function(){
+        alert("In Component Will Mount");
+    },
+    componentDidMount:function(){
+        alert("In component Did Mount");
+    },
+    componentWillReceiveProps:function(){
+        alert("In component will receive props");
+    },
+    componentWillUnmount:function(){
+        alert("");
+    },
+    addFriend:function(friend){
+        this.setState({
+            friends:this.state.friends.concat([friend])
+        });
+    },
+    render:function(){
+        return (
+            <div>
+            <h3>
+            Name:{this.state.name}
+            </h3>
+            <ShowList names={this.state.friends} />
+            <AddFriend addNew={this.addFriend}/>
+            </div>
+        );
+    }
+});
+
+var ShowList = React.createClass({
+    getDefaultProps:function(){
+        return {
+            names:[]
+        }
+    },
+    render:function(){
+        var listItems = this.props.names.map(function(name){
+            return <li> {name}</li>
+        })
+        return (
+            <div>
+            <h3>Friends</h3>
+            <ul>{listItems}</ul>
+            </div>
+        )
+    }
+});
+// var HelloWorld = React.createClass({
+//     getInitialState:function(){
+//         return {
+//             username:'@arulselvan'
+//         };
+//     },
+//     handleChange:function(e){
+//         this.setState({
+//             username:e.target.value
+//         });
+//     },
+//     render:function(){
+//         return (
+//             <div>
+//             Hello {this.state.username}! <br />
+//             <input type="text" placeholder="Enter value"
+//                     value={this.state.username} onChange={this.handleChange}/>
+//             </div>
+//         );
+//     }
+// });
+
+ReactDOM.render(<FriendsContainer/>,document.getElementById("app"));
+</script>
