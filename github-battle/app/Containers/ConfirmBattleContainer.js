@@ -15,7 +15,7 @@ var ConfirmBattleContainer = React.createClass({
             .then(function(players){
                 console.log("Called",players);
                 this.setState({
-                    isLoading:true,
+                    isLoading:false,
                     playersInfo:[players[0],players[1]]
                 });
             }.bind(this));

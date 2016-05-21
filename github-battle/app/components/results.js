@@ -5,6 +5,7 @@ var UserDetails = require('./UserDetails');
 var UserDetailsWrapper = require('./UserDetailsWrapper');
 var Link = require('react-router').Link;
 var MainContainer = require('../containers/MainContainer');
+var Loading = require('./Loading');
 
 function puke(object){
     return <pre>{JSON.stringify(object,null,' ')}</pre>
@@ -25,7 +26,7 @@ function StartOver(){
 function Results(props){
     if(props.isLoading === true){
         return (
-            <p>Loading!</p>
+            <Loading text="One Moment" speed={100}/>
         );
     }
     if(props.scores[0]===props.scores[1]){
