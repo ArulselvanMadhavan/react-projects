@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "production":"webpack -p"
+    "production": "webpack -p",
+    "start": "webpack-dev-server"
   },
   "author": "Arulselvan Madhavan arulselvan1234@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.11.1",
     "react": "^15.0.2",
-    "react-dom": "^15.0.2"
+    "react-dom": "^15.0.2",
+    "react-router": "^2.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.9.0",
