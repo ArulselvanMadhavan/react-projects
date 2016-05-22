@@ -14,7 +14,7 @@ export default React.createClass({
         return 0;
     },
     render: function() {
-        return this.props.winner
+        return (this.props.winner
             ? <Winner winner={this.props.winner} ref="winner"/>
             : (
                 <div className="results">
@@ -32,6 +32,6 @@ export default React.createClass({
                         </button>
                     </div>
                 </div>
-            );
+            ));
     }
 });
