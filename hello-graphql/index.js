@@ -37,9 +37,6 @@ let query = `
   }
 `;
 
-graphql( Schema, query, null, {
-		inputMessage: "Hello"
-	})
-	.then( function ( result ) {
-		console.log( result );
-	});
+graphql(Schema, query, null, {inputMessage: "Hello"}).then(function(result) {
+  console.log(result);
+});
